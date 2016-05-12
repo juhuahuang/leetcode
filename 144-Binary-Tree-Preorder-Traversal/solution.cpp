@@ -11,9 +11,9 @@ class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
         vector<int> result;
-        stack<int> ss;
+        stack<TreeNode*> ss;
         TreeNode* node = root;
-        while( node ){
+        while( node || !ss.empty() ){
             if(node){
                 result.push_back(node->val);
                 ss.push(node);
