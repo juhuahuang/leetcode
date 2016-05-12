@@ -11,6 +11,7 @@ class Solution {
 public:
     vector<int> postorderTraversal(TreeNode *root) {
        stack<TreeNode*> ss;
+       vector<int> result;
        TreeNode* node = root;
        TreeNode* last_visit;
        TreeNode* peek;
@@ -31,5 +32,6 @@ public:
                }
            }
        }
+       return result;
     }
 };
