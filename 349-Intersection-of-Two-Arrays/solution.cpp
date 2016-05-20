@@ -1,7 +1,6 @@
 class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
-        unordered_set<int> result;
         unordered_set<int> numSet;
         for( int n:nums1){
             numSet.insert(n);
@@ -11,6 +10,7 @@ public:
                 result.insert(n);
             }
         }
-        return vector<int>(result);
+        
+        return vector<int>(result.begin(),result.end());
     }
 };
