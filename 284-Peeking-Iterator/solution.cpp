@@ -46,6 +46,6 @@ public:
 	}
 
 	bool hasNext() const {
-	    return isSaved || hasNext();
+	    return isSaved || Iterator::hasNext();
 	}
 };
