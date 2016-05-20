@@ -4,7 +4,7 @@ public:
         vector<int> result;
         unordered_set<int> numSet;
         for( int n:nums1){
-            numSet.add(n);
+            numSet.insert(n);
         }
         for( int n:nums2){
             if(numSet.find( n) != numSet.end()){
