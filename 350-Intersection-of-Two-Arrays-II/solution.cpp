@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
-       if( nums1.size() > nums2.size()) return intersect( nums2,nums1);
+       if( nums1.size() < nums2.size()) return intersect( nums2,nums1);
        vector<int> result;
        unordered_map<int,int> numCount;
        for( int n : nums1){
