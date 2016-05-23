@@ -23,23 +23,28 @@ public:
               yIndex.push_back(i);
           }
           if( board[rowNum-1][i] == 'O'){
-              xIndex.push_back(rowNum);
+              xIndex.push_back(rowNum-1);
               yIndex.push_back(i);
           }
       }
       int neighbor[] = {0,1,0,-1,1,0,-1,0};
       for( int i = 0; i< xIndex.size();++i){
+          
           int xInd = xIndex[i];
           int yInd = yIndex[i];
+          //cout<<i<<' '<<xInd<<' '<<xInd<<endl;
           board[xInd][yInd] = 'Y';
-          cout<<xInd+neighbor[i]<<endl;
+          
           for(int i =0;i<8;i +=2){
+              
               if( xInd+neighbor[i] >=0 && xInd+neighbor[i] <rowNum && yInd+neighbor[i+1] >=0 && yInd+neighbor[i+1] <colNum && board[xInd+neighbor[i]][yInd+neighbor[i+1]] == 'O'){
+                  
                   xIndex.push_back(xInd+neighbor[i]);
                   yIndex.push_back(yInd+neighbor[i+1]);
               }
           }
       }
+      
       for( int r = 0;r<rowNum;++r){
           for( int c = 0; c<colNum;++c){
               if( board[r][c] == 'Y'){
