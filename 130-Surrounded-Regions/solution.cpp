@@ -36,7 +36,7 @@ public:
           for(int i =0;i<8;i +=2){
               if( xInd+neighbor[i] >=0 && xInd+neighbor[i] <rowNum && yInd+neighbor[i+1] >=0 && yInd+neighbor[i+1] <colNum && board[xInd+neighbor[i]][yInd+neighbor[i+1]] == 'O'){
                   xIndex.push_back(xInd+neighbor[i]);
-                  yIndex.push_back(yind+beighbor[i+1]);
+                  yIndex.push_back(yInd+beighbor[i+1]);
               }
           }
       }
