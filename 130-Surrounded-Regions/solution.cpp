@@ -27,7 +27,7 @@ public:
               yIndex.push_back(i);
           }
       }
-      int[] neighbor = {0,1,0,-1,1,0,-1,0};
+      int neighbor[] = {0,1,0,-1,1,0,-1,0};
       for( int i = 0; i< xIndex.size();++i){
           int xInd = xIndex[i];
           int yInd = yIndex[i];
