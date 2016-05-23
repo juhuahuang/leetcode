@@ -41,7 +41,7 @@ public:
           }
       }
       for( int r = 0;r<rowNum;++r){
-          for( int c = 0; c<colNUm;++c){
+          for( int c = 0; c<colNum;++c){
               if( board[r][c] == 'Y'){
                   board[r][c] = 'O';
               }
