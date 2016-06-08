@@ -40,7 +40,7 @@ public:
                 c = c0;
             }
         }
-        return done || buildTree(nextLevel,backward,dict, tree, reverse)
+        return done || buildTree(nextLevel,backward,dict, tree, reverse);
     }
     
     void printPath(string beginWord,string endWord,unordered_map<string, vector<string> > tree, vector<string> &path,vector<vector<string> > &paths){
