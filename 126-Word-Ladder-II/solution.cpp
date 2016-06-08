@@ -31,7 +31,7 @@ public:
                             done = true;
                             !reverse?tree[it].push_back(word):tree[word].push_back(it);
                         }
-                        else(!done && dict.find(word) != dict.end()){
+                        else if (!done && dict.find(word) != dict.end() ){
                             nextLevel.insert(word);
                             !reverse?tree[it].push_back(word):tree[word].push_back(it);
                         }
