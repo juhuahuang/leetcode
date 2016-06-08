@@ -37,13 +37,15 @@ public:
         for( int i = 0;i<beginWord.size();i++){
             for( char c = 'a';c<='z';c++){
                 string newWord = beginWord;
-                newWord[i] = c;
-                if( newWord != beginWord && wordList.find(newWord) != wordList.end() && !visited[newWord] ){
-                    visited[newWord] = true;
-                    path.push_back(newWord);
-                    DFS(newWord, endWord,wordList,path,result,visited,min_len);
-                    visited[newWord] = false;
-                    path.pop_back();
+                if( newWord[i] != c){
+                    newWord[i] = c;
+                    if( newWord != beginWord && wordList.find(newWord) != wordList.end() && !visited[newWord] ){
+                        visited[newWord] = true;
+                        path.push_back(newWord);
+                        DFS(newWord, endWord,wordList,path,result,visited,min_len);
+                        visited[newWord] = false;
+                        path.pop_back();
+                    }
                 }
             }
         }
