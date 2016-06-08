@@ -1,57 +1,59 @@
 class Solution {
 public:
     vector<vector<string>> findLadders(string beginWord, string endWord, unordered_set<string> &wordList) {
-        vector<vector<string> > result;
-        vector<string> path;
-        unordered_map<string,bool> visited;
-        int min_len = INT_MAX;
-        if( beginWord == endWord){
-            path.push_back(beginWord);
-            result.push_back(path);
-            return result;
+        unordered_set<string> forward,backward;
+        forward.insert(beginWord);
+        backward.insert(endWord);
+        vector<vector<string> > paths;
+        vector<string> path(1,beginWord);
+        unordered_map<string, vector<string> > tree;
+        if( buildTree(forward, backward, dict, tree, false)){
+            printPath();
         }
-        visited[beginWord] = true;
-        for(auto word : wordList){
-            visited[word] = false;
-        }
-        path.push_back(beginWord);
-        DFS(beginWord,endWord,wordList,path,result,visited,min_len);
-        return result;
+        return paths;
+        
     }
     
-    void DFS(string beginWord,string endWord,unordered_set<string> &wordList, vector<string> &path,vector<vector<string> > &result,unordered_map<string,bool> &visited,int &min_len ){
-        if( beginWord == endWord){
-            int len = path.size();
-            if( len < min_len){
-                result.clear();
-                result.push_back(path);
-                min_len = len;
-            }
-            else if( len == min_len){
-                result.push_back(path);
-            }
-            return;
-        }
-        
-        
-        for( int i = 0;i<beginWord.size();i++){
-            for( char c = 'a';c<='z';c++){
-                string newWord = beginWord;
-                if( newWord[i] != c){
-                    newWord[i] = c;
-                    if( newWord != beginWord && wordList.find(newWord) != wordList.end() && !visited[newWord] ){
-                        visited[newWord] = true;
-                        path.push_back(newWord);
-                        DFS(newWord, endWord,wordList,path,result,visited,min_len);
-                        visited[newWord] = false;
-                        path.pop_back();
+    bool buildTree(unordered_set<string> forward, unordered_set<string> backward, unordered_set<string> &dict, unordered_map<string, vector<string> > &tree, bool reverse){
+        if( forward.empty()) return false;
+        if( forward.size() > backward.size()) return buildTree(backward, forward, dict,tree, !reverse);
+        for( string &word : forward) dict.erase(word);
+        for( string &word : backward) dict.erase(word);
+        bool done = false;
+        unordered_set< string> nextLevel;
+        for( string &it:forward){
+            string word = it;
+            for(char &c :word){
+                char c0 = c;
+                for( c = 'a';c<='z';++c){
+                    if( c!=c0){
+                        if( backward.find(word) != backward.end() ) {
+                            done = true;
+                            !reverse?tree[it].push_back(word):tree[word].push_back(it);
+                        }
+                        else(!done && dict.find(word) != dict.end()){
+                            nextLevel.insert(word);
+                            !reverse?tree[it].push_back(word):tree[word].push_back(it);
+                        }
                     }
                 }
+                c = c0;
             }
         }
-        
-
+        return done || buildTree(nextLevel,backward,dict, tree, reverse)
     }
     
-   
+    void printPath(string beginWord,string endWord,unordered_map<string, vector<string> > tree, vector<string> &path,vector<vector<string> > &paths){
+        if( beginWord == endWord){
+            paths.push_back(path);
+            return;
+        }
+        for( string word : tree[beginWord]){
+            path.push_back(word);
+            printPath(word, endWord,tree,path,paths);
+            path.pop_back();
+            
+        }
+        
+    }
 };
