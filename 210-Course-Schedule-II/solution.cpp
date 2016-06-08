@@ -10,7 +10,7 @@ public:
             inDegree[p.first]++;
         }
         unordered_set<int> startNode;
-        for( int i = 0;i<numCourse;i++){
+        for( int i = 0;i<numCourses;i++){
             if(inDegree[i] == 0) startNode.insert(i);
         }
         
