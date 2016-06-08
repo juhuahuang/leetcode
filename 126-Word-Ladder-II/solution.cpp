@@ -8,7 +8,7 @@ public:
         vector<string> path(1,beginWord);
         unordered_map<string, vector<string> > tree;
         if( buildTree(forward, backward, wordList, tree, false)){
-            printPath();
+            printPath(beginWord,endWord,tree,path,paths);
         }
         return paths;
         
