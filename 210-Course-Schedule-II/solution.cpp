@@ -6,7 +6,7 @@ public:
         vector<vector<int> > graph(numCourses);
         vector<int> inDegree(numCourses,0);
         for( auto &p:prerequisites){
-            numCourse[p.second].push_back(p.first);
+            numCourses[p.second].push_back(p.first);
             inDegree[p.first]++;
         }
         unordered_set<int> startNode;
