@@ -3,7 +3,7 @@ public:
     vector<vector<string>> findLadders(string beginWord, string endWord, unordered_set<string> &wordList) {
         vector<vector<string> > result;
         vector<string> path;
-        map<string,bool> visited;
+        unordered_map<string,bool> visited;
         int min_len = INT_MAX;
         if( beginWord == endWord){
             path.push_back(beginWord);
