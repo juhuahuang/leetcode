@@ -21,9 +21,9 @@ public:
         for( auto &word : backward) dict.erase(word);
         bool done = false;
         unordered_set< string> nextLevel;
-        for( string &it:forward){
+        for( auto &it:forward){
             string word = it;
-            for(char &c :word){
+            for(auto &c :word){
                 char c0 = c;
                 for( c = 'a';c<='z';++c){
                     if( c!=c0){
@@ -48,7 +48,7 @@ public:
             paths.push_back(path);
             return;
         }
-        for( string word : tree[beginWord]){
+        for( auto &word : tree[beginWord]){
             path.push_back(word);
             printPath(word, endWord,tree,path,paths);
             path.pop_back();
