@@ -19,7 +19,7 @@ public:
         return result;
     }
     
-    void DFS(string beginWord,string endWord,unordered_set<string> &wordList, vector<string> &path,vector<vector<string> > &result,map<string,bool> &visited,int &min_len ){
+    void DFS(string beginWord,string endWord,unordered_set<string> &wordList, vector<string> &path,vector<vector<string> > &result,unordered_map<string,bool> &visited,int &min_len ){
         if( beginWord == endWord){
             int len = path.size();
             if( len < min_len){
