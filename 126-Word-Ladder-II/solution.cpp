@@ -17,8 +17,8 @@ public:
     bool buildTree(unordered_set<string> forward, unordered_set<string> backward, unordered_set<string> &dict, unordered_map<string, vector<string> > &tree, bool reverse){
         if( forward.empty()) return false;
         if( forward.size() > backward.size()) return buildTree(backward, forward, dict,tree, !reverse);
-        for( string &word : forward) dict.erase(word);
-        for( string &word : backward) dict.erase(word);
+        for( auto &word : forward) dict.erase(word);
+        for( auto &word : backward) dict.erase(word);
         bool done = false;
         unordered_set< string> nextLevel;
         for( string &it:forward){
