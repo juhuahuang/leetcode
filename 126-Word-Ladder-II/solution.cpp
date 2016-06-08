@@ -7,7 +7,7 @@ public:
         vector<vector<string> > paths;
         vector<string> path(1,beginWord);
         unordered_map<string, vector<string> > tree;
-        if( buildTree(forward, backward, dict, tree, false)){
+        if( buildTree(forward, backward, wordList, tree, false)){
             printPath();
         }
         return paths;
